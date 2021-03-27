@@ -1,5 +1,5 @@
 const bookName = "The little prince";
-const bookAuthor = "Antoine de Saint";
+const bookAuthor = "Antoine de Saint-Exupéry";
 
 const bookNameCanceled = "The little prince-canceled";
 const bookAuthorCanceled = "Antoine de Saint-Exupéry-canceled";
@@ -12,6 +12,7 @@ describe("When the user wants to create a book", () =>{
 
         cy.visit("https://cicd-books-front.herokuapp.com/");
         cy.get('.ant-btn-primary > .ng-star-inserted').click();
+        cy.wait(1000);
         cy.get("#name").type(bookName);
         cy.get("#author").type(bookAuthor);
         cy.get('.ant-modal-footer > .ant-btn-primary > .ng-star-inserted').click();
@@ -51,6 +52,7 @@ describe("When the user wants to cancel the creation of a book", () =>{
 
         cy.visit("https://cicd-books-front.herokuapp.com/");
         cy.get('.ant-btn-primary > .ng-star-inserted').click();
+        cy.wait(1000);
         cy.get("#name").type(bookNameCanceled);
         cy.get("#author").type(bookAuthorCanceled);
         cy.get('.ant-modal-footer > [nztype="default"] > .ng-star-inserted').click();
@@ -79,6 +81,7 @@ describe("When the user wants to create a book without name", () =>{
         cy.clearCookies();
         cy.visit("https://cicd-books-front.herokuapp.com/");
         cy.get('.ant-btn-primary > .ng-star-inserted').click();
+        cy.wait(1000);
         cy.get("#name").type(bookName); 
 
     });
@@ -99,6 +102,7 @@ describe("When the user wants to create a book without author", () =>{
         cy.clearCookies();
         cy.visit("https://cicd-books-front.herokuapp.com/");
         cy.get('.ant-btn-primary > .ng-star-inserted').click();
+        cy.wait(1000);
         cy.get("#author").type(bookAuthor);
 
     });
