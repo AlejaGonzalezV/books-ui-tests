@@ -1,7 +1,10 @@
-describe("When the user wants to create a book", () =>{
+const bookName = "The little prince";
+const bookAuthor = "Antoine de Saint";
 
-    const bookName = "The little prince";
-    const bookAuthor = "Antoine de Saint-Exupéry";
+const bookNameCanceled = "The little prince-canceled";
+const bookAuthorCanceled = "Antoine de Saint-Exupéry-canceled";
+
+describe("When the user wants to create a book", () =>{
 
     before("", () =>{
 
@@ -42,17 +45,14 @@ describe("When the user wants to create a book", () =>{
 
 describe("When the user wants to cancel the creation of a book", () =>{
 
-    const bookName = "The little prince-canceled";
-    const bookAuthor = "Antoine de Saint-Exupéry-canceled";
-
     before("", () =>{
 
         cy.clearCookies();
 
         cy.visit("https://cicd-books-front.herokuapp.com/");
         cy.get('.ant-btn-primary > .ng-star-inserted').click();
-        cy.get("#name").type(bookName);
-        cy.get("#author").type(bookAuthor);
+        cy.get("#name").type(bookNameCanceled);
+        cy.get("#author").type(bookAuthorCanceled);
         cy.get('.ant-modal-footer > [nztype="default"] > .ng-star-inserted').click();
         cy.contains('10 / page').click();
         cy.contains('50 / page').click();
@@ -72,9 +72,7 @@ describe("When the user wants to cancel the creation of a book", () =>{
 
 });
 
-describe("When the user wants to create a book without a field", () =>{
-
-    const bookName = "The little prince";
+describe("When the user wants to create a book without name", () =>{
 
     before("", () =>{
 
@@ -82,6 +80,26 @@ describe("When the user wants to create a book without a field", () =>{
         cy.visit("https://cicd-books-front.herokuapp.com/");
         cy.get('.ant-btn-primary > .ng-star-inserted').click();
         cy.get("#name").type(bookName); 
+
+    });
+
+    it("Then the save button should be disabled", () =>{
+       
+        cy.get('.ant-modal-footer > .ant-btn-primary').should("be.disabled");
+
+    });
+    
+
+});
+
+describe("When the user wants to create a book without author", () =>{
+
+    before("", () =>{
+
+        cy.clearCookies();
+        cy.visit("https://cicd-books-front.herokuapp.com/");
+        cy.get('.ant-btn-primary > .ng-star-inserted').click();
+        cy.get("#author").type(bookAuthor);
 
     });
 
