@@ -161,6 +161,7 @@ describe("When the user wants to edit a book without name", () =>{
         cy.visit("https://cicd-books-front.herokuapp.com/");
         cy.get('.ant-btn-primary > .ng-star-inserted').click();
         cy.wait(1000);
+        
         cy.get("#name").type(bookName);
         cy.get("#author").type(bookAuthor);
         cy.get('.ant-modal-footer > .ant-btn-primary > .ng-star-inserted').click();
