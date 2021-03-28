@@ -1,6 +1,6 @@
 # books-ui-tests
 
-This repository contains e2e tests for the app deployed on: https://cicd-books-front.herokuapp.com/dashboard
+This repository contains e2e tests for the app deployed on: https://cicd-books-front.herokuapp.com
 
 to run tests you have to run:
 ```
